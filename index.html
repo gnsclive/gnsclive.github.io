@@ -2,44 +2,233 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>GNSC Live</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GNSC Live | Global Neurosurgical Students Council</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  
   <style>
+    /* 1. MODERN COLOR PALETTE & VARIABLES */
+    :root {
+      --primary-dark: #0a192f;    /* Deep Academic Blue */
+      --accent-blue: #1e3a8a;     /* Professional Blue */
+      --medical-blue: #3b82f6;    /* Bright Accent */
+      --soft-bg: #f8fafc;         /* Light Gray/Blue background */
+      --text-main: #1e293b;       /* Dark Slate text */
+      --text-muted: #475569;      /* Gray text */
+      --white: #ffffff;
+    }
+
+    /* 2. CORE RESET */
+    * {
+      box-sizing: border-box;
+    }
+    
     body {
-      font-family: Arial, Helvetica, sans-serif;
+      font-family: 'Inter', sans-serif;
       margin: 0;
-      line-height: 1.6;
-      color: #222;
+      line-height: 1.7;
+      color: var(--text-main);
+      background-color: var(--white);
+      scroll-behavior: smooth;
     }
+
+    /* 3. STICKY HEADER & NAVIGATION */
     header {
-      background: #0b2c4d;
-      color: #fff;
-      padding: 20px;
+      background: var(--primary-dark);
+      color: var(--white);
+      padding: 1rem 5%;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
     }
-    nav a {
-      color: #fff;
-      margin-right: 15px;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    section {
-      padding: 40px 20px;
-      max-width: 1000px;
+
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
       margin: auto;
     }
-    h1, h2 {
-      color: #0b2c4d;
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 15px;
     }
-    footer {
-      background: #f4f4f4;
-      text-align: center;
-      padding: 20px;
-      font-size: 14px;
+
+    /* Logo Fix: Ensure it scales well and handles missing files gracefully */
+    .brand img {
+      height: 50px;
+      width: auto;
+      display: block;
+      background-color: rgba(255,255,255,0.1); /* fallback box */
+      border-radius: 4px;
     }
+
+    .brand-text h1 {
+      margin: 0;
+      font-size: 1.25rem;
+      letter-spacing: 1px;
+      color: var(--white);
+    }
+
+    .brand-text p {
+      margin: 0;
+      font-size: 0.75rem;
+      opacity: 0.8;
+      font-weight: 400;
+    }
+
+    nav {
+      display: flex;
+      gap: 20px;
+    }
+
+    nav a {
+      color: var(--white);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: var(--medical-blue);
+    }
+
+    /* 4. HERO SECTION */
     .hero {
-      background: #eef4fa;
-      padding: 60px 20px;
+      background: linear-gradient(135deg, #0a192f 0%, #1e3a8a 100%);
+      color: var(--white);
+      padding: 100px 5%;
       text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-content {
+      max-width: 800px;
+      margin: auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      margin-bottom: 1.5rem;
+      line-height: 1.2;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      opacity: 0.9;
+      max-width: 600px;
+      margin: 0 auto 2rem;
+    }
+
+    /* 5. CONTENT SECTIONS & CARDS */
+    section {
+      padding: 80px 5%;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    h2 {
+      font-family: 'Playfair Display', serif;
+      color: var(--primary-dark);
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      position: relative;
+    }
+
+    h2::after {
+      content: '';
+      display: block;
+      width: 50px;
+      height: 4px;
+      background: var(--medical-blue);
+      margin-top: 10px;
+    }
+
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
+
+    .card {
+      background: var(--soft-bg);
+      padding: 30px;
+      border-radius: 12px;
+      border-left: 5px solid var(--accent-blue);
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .card h3 {
+      margin-top: 0;
+      color: var(--accent-blue);
+    }
+
+    /* 6. LIST STYLING */
+    .events-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .events-list li {
+      background: var(--white);
+      margin-bottom: 15px;
+      padding: 15px 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      display: flex;
+      align-items: center;
+    }
+
+    .events-list li::before {
+      content: '✦';
+      color: var(--medical-blue);
+      margin-right: 15px;
+      font-weight: bold;
+    }
+
+    /* 7. FOOTER & CONTACT */
+    .contact-section {
+      background: var(--soft-bg);
+      text-align: center;
+      border-radius: 12px;
+    }
+
+    footer {
+      background: var(--primary-dark);
+      color: var(--white);
+      text-align: center;
+      padding: 40px 20px;
+      font-size: 0.9rem;
+    }
+
+    /* 8. RESPONSIVENESS */
+    @media (max-width: 768px) {
+      .nav-container {
+        flex-direction: column;
+        gap: 20px;
+      }
+      nav {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      .hero h2 {
+        font-size: 1.8rem;
+      }
     }
   </style>
 </head>
@@ -47,81 +236,68 @@
 <body>
 
 <header>
-  <div style="display: flex; align-items: center; gap: 15px;">
-    <img src="logo.png" style="height: 60px;">
-    <div>
-      <h1 style="margin: 0;">GNSC Live</h1>
-      <p style="margin: 0;">Official Academic Broadcasting Platform of the Global Neurosurgical Students Council</p>
+  <div class="nav-container">
+    <div class="brand">
+      <img src="logo.png" alt="GNSC Logo" width="50" height="50" onerror="this.style.display='none'">
+      <div class="brand-text">
+        <h1>GNSC Live</h1>
+        <p>Global Neurosurgical Students Council</p>
+      </div>
     </div>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#vision">Vision</a>
+      <a href="#mission">Mission</a>
+      <a href="#events">Events</a>
+      <a href="#contact">Contact</a>
+    </nav>
   </div>
-  <nav>
-    <a href="#about">About</a>
-    <a href="#vision">Vision</a>
-    <a href="#mission">Mission</a>
-    <a href="#events">Events</a>
-    <a href="#contact">Contact</a>
-  </nav>
 </header>
 
 <div class="hero">
-  <h2>Global Neurosurgical Education Without Borders</h2>
-  <p>Delivering high-quality, evidence-based neurosurgical education to students and trainees worldwide.</p>
+  <div class="hero-content">
+    <h2>Global Neurosurgical Education Without Borders</h2>
+    <p>Delivering high-quality, evidence-based neurosurgical education to students and trainees worldwide.</p>
+  </div>
 </div>
 
 <section id="about">
   <h2>About GNSC Live</h2>
-  <p>
-    GNSC Live is the official digital academic broadcasting platform of the Global Neurosurgical Students Council (GNSC).
-    The platform is dedicated to providing accessible, high-quality neurosurgical education to medical students and
-    neurosurgical trainees across the globe.
-  </p>
+  <p>GNSC Live is the official digital academic broadcasting platform of the Global Neurosurgical Students Council (GNSC). We leverage modern technology to bridge the gap in neurosurgical knowledge across continents.</p>
 </section>
 
-<section id="vision">
-  <h2>Our Vision</h2>
-  <p>
-    To unite medical students and neurosurgical trainees worldwide through accessible, equitable,
-    and globally impactful neurosurgical education.
-  </p>
-</section>
-
-<section id="mission">
-  <h2>Our Mission</h2>
-  <p>
-    GNSC Live advances the mission of the Global Neurosurgical Students Council by delivering live and recorded
-    neurosurgical educational content under international academic supervision. The platform empowers medical
-    students and neurosurgical residents with globally informed expertise, fosters international academic
-    collaboration, promotes equity in educational opportunities—particularly in resource-limited regions—and
-    serves as a sustainable, official repository for the Council’s educational initiatives.
-  </p>
+<section id="goals" style="background-color: #ffffff; padding-top: 0;">
+  <div class="grid-container">
+    <div class="card" id="vision">
+      <h3>Our Vision</h3>
+      <p>To unite medical students and neurosurgical trainees worldwide through accessible, equitable, and globally impactful neurosurgical education.</p>
+    </div>
+    <div class="card" id="mission">
+      <h3>Our Mission</h3>
+      <p>GNSC Live advances the mission of the GNSC by delivering live and recorded neurosurgical educational content under international academic supervision.</p>
+    </div>
+  </div>
 </section>
 
 <section id="events">
   <h2>Events & Live Broadcasts</h2>
-  <ul>
+  <ul class="events-list">
     <li>Live neurosurgical lectures and webinars</li>
     <li>Expert-led panel discussions and workshops</li>
-    <li>Research methodology and academic development sessions</li>
-    <li>Mentorship and career guidance events</li>
+    <li>Research and mentorship sessions</li>
   </ul>
-  <p>
-    All sessions are designed to support global neurosurgical education and collaboration.
-  </p>
 </section>
 
-<section id="contact">
-  <h2>Contact</h2>
-  <p>
-    For academic collaborations, partnerships, or inquiries:
-  </p>
-  <p>
-    📧 Email: <em>gnsclive@gmail.com</em><br>
-    📺 YouTube: @GNSCLive
-  </p>
+<section id="contact" class="contact-section">
+  <h2>Contact Us</h2>
+  <p>For inquiries, collaboration, or session details, reach out via our official channels.</p>
+  <p><strong>Email:</strong> official GNSC email</p>
+  <p><strong>YouTube:</strong> GNSC Live</p>
 </section>
 
 <footer>
-  <p>© Global Neurosurgical Students Council — GNSC Live</p>
+  <p>©️ Global Neurosurgical Students Council — GNSC Live</p>
+  <p style="opacity: 0.6; font-size: 0.8rem; margin-top: 10px;">Official Academic Broadcasting Platform</p>
 </footer>
 
 </body>
